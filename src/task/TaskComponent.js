@@ -1,9 +1,7 @@
 import './task.css'
 
-export default function Task() {
-    return (
-        <div className='taskContainer'>
-            
-        </div>
+export default function Task(props) {
+    return ( 
+            <div className='taskname'>{props.taskname}</div>
     )
 }
