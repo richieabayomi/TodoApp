@@ -31,12 +31,21 @@ function App() {
 
 
   const completeTask = (task) => {
-    tasks.map((ctask,key) => {
-      if(ctask.id === task.id){
-     
-        
-      }
-    })
+
+    setTasks(
+      tasks.map((ctask,key) => {
+        if(ctask.id === task.id){
+          if(!task.completed){
+            return {...task, completed:true}
+          }else{
+            alert("task already completed");
+            return {...task, completed:true}
+          }
+          
+          }
+        })
+    )
+   
   }
 
   return (
@@ -48,7 +57,8 @@ function App() {
       <div className='tc'>
         {tasks.map((task,key) => {
           return (
-            <div className='taskcontainer'>
+            <div className='taskcontainer'
+            style={{border:task.completed == true?"3px solid green":"3px solid red"}}>
               <button className='completed' onClick={() => {completeTask(task)}}>Done</button>
               <Task id = {task.id} taskname = {task.taskname} completed = {task.completed} />
               <button className='x' onClick={() => {deleteTask(task)}}>X</button>
